@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h2>Inscription</h2>
+<h2>Inscrivez-vous</h2>
 
 {% if form.errors %}
     {{ errors }}
@@ -12,6 +12,7 @@
     {% csrf_token %}
     {{ form.as_p }}
 
+    <a href="{% url 'login' %}" class="button-return">Retourner</a>
     <button type="submit">S'inscrire</button>
 </form>
 

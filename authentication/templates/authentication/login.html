@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
+
 {% if message %}
     <p>{{ message }}</p>
 {% endif %}
+
+<h2>Inscrivez-vous</h2>
+<a href="{% url 'signup' %}">Inscrivez-vous maintenant !</a>
+
+<h2>Connectez-vous</h2>
 <form method="post">
     {{ form.as_p }}
     {% csrf_token %}
     <button type="submit">Se connecter</button>
 </form>
 
-<p>Pas encore membre?
-    <a href="{% url 'signup' %}">Inscrivez-vous maintenant !</a>
-
-</p>
 {% endblock content %}
