@@ -16,6 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from django.conf import urls
 
 from authentication import views as authentication_views
 from blog import views as blog_views
@@ -25,5 +28,9 @@ urlpatterns = [
     path("", authentication_views.LoginPageView, name="login"),
     path("logout/", authentication_views.LogoutPageView, name="logout"),
     path("home/", blog_views.home, name="home"),
-    path("signup/", authentication_views.signup, name="signup")
-]
+    path("signup/", authentication_views.signup, name="signup"),
+    path("create-ticket/", blog_views.create_ticket, name="create-ticket"),
+    path("posts/", blog_views.AllPostsView, name="posts"),
+    path("post/<int:post_id>", blog_views.PostView, name="view-post"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
