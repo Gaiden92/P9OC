@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p style="font-weight: bold;">Suivie d'autres utilisateurs</p>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Envoyer">
+</form>
+
+<p style="font-weight: bold;">Abonnements</p >
+
+    {% for follow in follows %}
+    <div style="padding: 10px;display: flex;flex-direction: row;border: 1px solid black;align-items: baseline;
+    justify-content: space-between;">
+        <p>{{follow.user}}</p>
+        <a href="{% url 'unfollow' follow.id %}">Désabonner</a>
+    </div>
+        
+        
+    {% endfor %}
+
+<p style="font-weight: bold;">Abonnés</p >
+
+    {% for follower in followers %}
+    <div style="display: flex;flex-direction: row;border: 1px solid black;align-items: baseline;
+    justify-content: space-between;">
+        <p>{{follower.followed_user}}</p>
+    </div>
+        
+        
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if ticket %}
+<div>
+    <ul>
+        <li>{{ ticket.title }}</li>
+        <li>{{ ticket.description }}</li>
+        <li>{{ ticket.time_created }}</li>
+        <li><img src="{{ ticket.image.url }}" alt="image {{ ticket.title }}"></li>
+    </ul>
+</div>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ review_form.as_p }}
+    <input type="submit" value="Enregistrer">
+</form>
+
+{% endblock content %}

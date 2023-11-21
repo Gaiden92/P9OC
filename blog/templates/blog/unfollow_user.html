@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>Êtes-vous vous sur de vouloir vous désabonner à {{ user_follow.user }} ?</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Confirmer">
+</form>
+{% endblock content %}

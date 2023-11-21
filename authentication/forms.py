@@ -15,6 +15,5 @@ class SignupForm(UserCreationForm):
         help_texts = {
             "username": None,
         }
-        
 
 

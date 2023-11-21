@@ -4,16 +4,21 @@
 
 <h2>Vos posts</h2>
 
-<div class="my-posts">
-{% if tickets %}
-    {% for ticket in tickets %}
-            <ul>
-                <li><a href="{% url 'view-post' ticket.id %}">{{ticket.title}}</a></li>
-            </ul>   
-    {% endfor %}
-{% else %}
-    <p>Vous n'avez actuellement aucun posts.</p>
-{% endif %}
-</div>
+<div class="my-posts" style="width: 400px;margin: 0 auto;">
 
-{% endblock content%}
+    {% if tickets %}
+        {% for ticket in tickets %}
+            {% include "blog/ticket.html" %}
+            {% for review in reviews %}
+                {% if review.ticket == ticket %}
+                    {% include "blog/review.html" %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+
+    {% else %}
+        <p>Vous n'avez actuellement aucun posts.</p>
+    {% endif %}
+
+</div>
+{% endblock content %}

@@ -28,9 +28,15 @@ urlpatterns = [
     path("", authentication_views.LoginPageView, name="login"),
     path("logout/", authentication_views.LogoutPageView, name="logout"),
     path("home/", blog_views.home, name="home"),
+    path("subscriptions/", blog_views.follow_user, name="subscriptions"),
+    path("subscriptions/<int:user_follow_id>/unfollow/", blog_views.unfollow_user, name="unfollow"),
     path("signup/", authentication_views.signup, name="signup"),
     path("create-ticket/", blog_views.create_ticket, name="create-ticket"),
     path("posts/", blog_views.AllPostsView, name="posts"),
-    path("post/<int:post_id>", blog_views.PostView, name="view-post"),
+    path("ticket/<int:ticket_id>/update-ticket/", blog_views.update_ticket, name="update-ticket"),
+    path("ticket/<int:ticket_id>/delete-ticket/", blog_views.delete_ticket, name="delete-ticket"),
+    path("create-review/", blog_views.create_review,kwargs={'ticket_id': None}, name="create-review"),
+    path("update-review/<int:review_id>", blog_views.update_review, name="update-review"),
+    path("delete-review/<int:review_id>", blog_views.delete_review, name="delete-review"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
