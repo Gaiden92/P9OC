@@ -1,17 +1,17 @@
-<div class="post" style="border: 1px solid black;text-align: center;">
-    <p>Vous avez publié un ticket</p>
+<div class="post">
         <ul style="list-style: none;">
-            <li>{{ticket.title}}</li>
-            <li>{{ticket.description}}</li>
-            <li>{{ticket.time_created}}</li>
+            <li>{{post.title}}</li>
+            <li>{{post.description}}</li>
+            <li>{{post.time_created}}</li>
 
-            {% if ticket.image %}
-                <li><img src="{{ ticket.image.url }}" width="200px" alt="image billet {{ ticket.title }}"></li>
+            {% if post.image %}
+                <li><img src="{{ post.image.url }}" width="200px" alt="image billet {{ post.title }}"></li>
             {% else %}
                 <li>Pas d'image pour ce ticket</li>
             {% endif %}
-            <li><a href="{% url 'update-ticket' ticket.id %}">Modifier</a></li>
-
-            <li><a href="{% url 'delete-ticket' ticket.id %}">Supprimer</a></li>
+            {% if post.ticket %}
+                {% include "blog/review.html" %}
+            {% endif %}
         </ul>
+
 </div>

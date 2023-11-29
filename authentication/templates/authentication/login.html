@@ -4,15 +4,23 @@
 {% if message %}
     <p>{{ message }}</p>
 {% endif %}
+<div class="container">
+    <div class="form-signup">
+        <h2>Inscrivez-vous</h2>
+        <a href="{% url 'signup' %}" class="link-button">S'inscrire</a>
+    </div>
+    
+    
+    <div class="form-login">
+        <h2>Connectez-vous</h2>
+        <form method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit">Se connecter</button>
+        </form>
+    </div>
+</div>
 
-<h2>Inscrivez-vous</h2>
-<a href="{% url 'signup' %}">Inscrivez-vous maintenant !</a>
 
-<h2>Connectez-vous</h2>
-<form method="post">
-    {{ form.as_p }}
-    {% csrf_token %}
-    <button type="submit">Se connecter</button>
-</form>
 
 {% endblock content %}

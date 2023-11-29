@@ -4,21 +4,25 @@
 
 <h2>Vos posts</h2>
 
-<div class="my-posts" style="width: 400px;margin: 0 auto;">
+<div class="my-posts" style="width: 800px;margin: 0 auto;">
 
-    {% if tickets %}
-        {% for ticket in tickets %}
-            {% include "blog/ticket.html" %}
-            {% for review in reviews %}
-                {% if review.ticket == ticket %}
+    {% if posts %}
+        {% for post in posts %}
+            <div class="post" data-aos="zoom-in" style="border: 1px solid black;width: 400px;margin: 0 auto;padding: 10px;">
+                {% if post.content_type == 'Ticket' %}
+                
+                    {% include 'blog/ticket.html' %}
+                    <a href="{% url 'update-ticket' post.id %}">Modifier</a>
+                    <a href="{% url 'delete-ticket' post.id %}">Supprimer</a>
+                {% elif post.content_type == 'Review' %}
                     {% include "blog/review.html" %}
+                    <a href="{% url 'update-review' post.id %}">Modifier</a>
+                    <a href="{% url 'delete-review' post.id %}">Supprimer</a>
                 {% endif %}
-            {% endfor %}
-        {% endfor %}
-
-    {% else %}
-        <p>Vous n'avez actuellement aucun posts.</p>
+            </div>
+        {% endfor%}
     {% endif %}
-
+            
+            
 </div>
 {% endblock content %}

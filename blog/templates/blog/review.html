@@ -1,22 +1,20 @@
-<div style="border: 1px solid black;">
-    <p>Vous avez publié une critique</p>
-    <p>{{ review.time_created }}</p>
-    <p>{{ review.rating }}</p>
-    <p>{{ review.headline }}</p>
-    <p>{{ review.body }}</p>
+<div>
+    <p>{{ post.time_created }}</p>
+    <p class="rate">{{ post.rating }}</p>
+    <p>{{ post.headline }}</p>
+    <p>{{ post.body }}</p>
     <div style="border: 1px solid black;width: 300px;margin: 0 auto;padding: 10px;">
         <ul style="list-style: none;">
-            <li>{{review.ticket.title}}</li>
-            <li>{{review.ticket.description}}</li>
-            <li>{{review.ticket.time_created}}</li>
+            <li>{{post.ticket.title}}</li>
+            <li>{{post.ticket.description}}</li>
+            <li>{{post.ticket.time_created}}</li>
 
-            {% if review.ticket.image %}
-                <li><img src="{{ review.ticket.image.url }}" width="200px" alt="image billet {{ review.ticket.title }}"></li>
+            {% if post.ticket.image %}
+                <li><img src="{{ post.ticket.image.url }}" width="200px" alt="image billet {{ post.ticket.title }}"></li>
             {% else %}
                 <li>Pas d'image pour ce ticket</li>
             {% endif %}
         </ul>
-        <a href="{% url 'update-review' review.id %}">Modifier</a>
-        <a href="{% url 'delete-review' review.id %}">Supprimer</a>
+
     </div>
 </div>

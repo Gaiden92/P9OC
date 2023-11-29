@@ -92,11 +92,11 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
         "OPTIONS": {
-            "min_length" : 8,
+            "min_length": 8,
         }
     },
     {
-      "NAME": "authentication.validators.ContainsLetterValidator",  
+      "NAME": "authentication.validators.ContainsLetterValidator",
     },
     {
         "NAME": "authentication.validators.ContainsNumberValidator",
@@ -119,7 +119,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR.joinpath('static/')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -132,6 +133,7 @@ LOGIN_URL = "login"
 
 LOGIN_REDIRECT_URL = "home"
 
-MEDIA_ROOT =  BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 MEDIA_URL = '/media/'
+

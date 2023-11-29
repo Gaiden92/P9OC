@@ -1,22 +1,39 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <title>LITRevu</title>
 </head>
 <body>
-    <h1>LITReview</h1>
+    <header id="header">
+        <h1>LITReview</h1>
+        <!-- nav menu -->
+        {% if user.is_authenticated %} 
+            {% include "menu.html" %}
+        {% endif %}
+    </header>
+
+
     
-    <!-- nav menu -->
-    {% if user.is_authenticated %} 
-        {% include "menu.html" %}
-    {% endif %}
+    
+
 
     {% block content %}{% endblock content %}
 
     {% if user.is_authenticated %}
         <p>Vous êtes connecté en tant que {{ request.user }}. <a href="{% url 'logout' %}">Se déconnecter</a></p>
     {% endif %}
+    <!-- AOS -->
+    <script>
+        AOS.init();
+    </script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

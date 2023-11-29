@@ -1,0 +1,53 @@
+*{font-family:Verdana, Geneva, Tahoma, sans-serif}
+body{margin: 0 5px;}
+.container{width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#header{border: 1px solid black;}
+h1{text-align: center;padding: 10px;margin: 5px;}
+
+form{border: 1px solid black;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 20px;}
+
+a.link-button{
+    background-color: #e9e9ed;
+    border: 0.2px solid #8f8f9d;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 13px;
+    display: block;
+    margin: auto;
+    width: fit-content;
+    text-decoration: none;
+}
+
+div.form-login > form > button{
+    margin: 0 auto;
+    display: block;
+} 
+
+/* MENU */
+nav.nav-menu{
+    position: absolute;
+    right: 20px;
+    top: 0;
+    padding: 10px;
+}
+ul.ul-menu{
+    list-style: none;
+    display: flex;
+}
+
+ul.ul-menu > li{
+    margin: 0 8px;
+}
+
+ul.ul-menu > li > a{
+    text-decoration: none;
+    cursor: pointer;
+}

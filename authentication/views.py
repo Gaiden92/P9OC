@@ -1,7 +1,9 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .  import forms
+
+from . import forms
+
 
 def LogoutPageView(request):
     logout(request)
@@ -23,7 +25,11 @@ def LoginPageView(request):
                 return redirect("home")
             else:
                 message = "Identifiants invalides."
-    return render(request, "authentication/login.html", context={"form":form, "message":message})
+    return render(request,
+                  "authentication/login.html",
+                  context={"form": form, "message": message}
+                  )
+
 
 def signup(request):
     form = forms.SignupForm()
@@ -33,5 +39,8 @@ def signup(request):
             user = form.save()
             login(request, user)
             return redirect(settings.LOGIN_REDIRECT_URL)
-        
-    return render(request, "authentication/signup.html", context={"form": form})
+
+    return render(request,
+                  "authentication/signup.html",
+                  context={"form": form}
+                  )

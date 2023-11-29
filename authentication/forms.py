@@ -4,10 +4,14 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length=63, label="Nom d'utilisateur")
-    password = forms.CharField(max_length=63, widget=forms.PasswordInput, label="Mot de passe")
+    username = forms.CharField(max_length=63, label='', widget=forms.TextInput(attrs={"placeholder": "Nom d'utilisateur"}))
+    password = forms.CharField(max_length=63, label='',
+                               widget=forms.PasswordInput(attrs={"placeholder": "Mot de passe"}))
+
 
 class SignupForm(UserCreationForm):
+    password1 = forms.CharField(max_length=63, widget=forms.PasswordInput(attrs={'placeholder': 'Mot de passe'}))
+    password2 = forms.CharField(max_length=63, widget=forms.PasswordInput(attrs={'placeholder': 'Confirmer mot de passe'}))
     
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
@@ -15,5 +19,6 @@ class SignupForm(UserCreationForm):
         help_texts = {
             "username": None,
         }
-
-
+        widgets = {
+            "username": forms.TextInput(attrs={"placeholder": "Nom d'utilisateur"}),
+        }
