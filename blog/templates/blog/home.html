@@ -2,14 +2,14 @@
 
 {% block content %}
 
-<div class="my-feed" style="width: 800px;margin: 0 auto;">
-
-    <p><a href="{% url 'create-ticket' %}">Demander une critique</a></p>
-    <p><a href="{% url 'create-ticket-and-review' %}">Créer une critique</a></p>
-
+<div class="my-feed">
+    <div class="flex">
+        <p><a class="link-button" href="{% url 'create-ticket' %}">Demander une critique</a></p>
+        <p><a class="link-button" href="{% url 'create-ticket-and-review' %}">Créer une critique</a></p>
+    </div>
     {% if posts %}
         {% for post in posts %}
-            <div class="post" data-aos="fade-up" style="border: 1px solid black;width: 400px;margin: 0 auto;padding: 10px;">
+            <div class="post" data-aos="fade-up">
                 
                 {% if post.content_type == 'Ticket' %}
                    
@@ -17,14 +17,14 @@
                         {% if post.user == user %}
                         Vous avez
                         {% else %}
-                        {{ post.user }} a
+                        {{ post.user|capfirst }} a
                         {% endif %} demandé une critique
                     </p>
 
                     
                     {% include 'blog/ticket.html' %}
                     {% if not post.id in tickets_ids_reviewed %}
-                        <a href="{% url 'create-review' post.id %}">Créer une critique</a>
+                        <p class="container-link"><a class="link-button" href="{% url 'create-review' post.id %}">Créer une critique</a></p>
                     {% endif%}
                 {% elif post.content_type == 'Review' %}
                     {% if post.user == user %}

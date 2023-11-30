@@ -1,13 +1,13 @@
 <div>
-    <p>{{ post.time_created }}</p>
+    <p class="date-published-review">{{ post.time_created }}</p>
+    <p class="headline-review">{{ post.headline }} - </p>
     <p class="rate">{{ post.rating }}</p>
-    <p>{{ post.headline }}</p>
     <p>{{ post.body }}</p>
-    <div style="border: 1px solid black;width: 300px;margin: 0 auto;padding: 10px;">
+    <div class="ticket-review">
         <ul style="list-style: none;">
+            <li>Ticket - {{ post.ticket.user|capfirst }}</li>
             <li>{{post.ticket.title}}</li>
             <li>{{post.ticket.description}}</li>
-            <li>{{post.ticket.time_created}}</li>
 
             {% if post.ticket.image %}
                 <li><img src="{{ post.ticket.image.url }}" width="200px" alt="image billet {{ post.ticket.title }}"></li>

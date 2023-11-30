@@ -1,20 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<p style="font-weight: bold;">Suivie d'autres utilisateurs</p>
+<h2 style="font-weight: bold;">Suivie d'autres utilisateurs</h2>
 
-<form method="post">
+<form method="post" class="suscribe-form">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Envoyer">
 </form>
 
-<p style="font-weight: bold;">Abonnements</p >
+<h2 style="font-weight: bold;">Abonnements</h2 >
     {% if follows %}
     
         {% for follow in follows %}
-            <div style="padding: 10px;display: flex;flex-direction: row;border: 1px solid black;align-items: baseline;
-            justify-content: space-between;">
+            <div class="container-suscriber">
                 <p>{{follow.user}}</p>
                 <a href="{% url 'unfollow' follow.id %}">Désabonner</a>
             </div> 
@@ -23,11 +22,10 @@
     {% else %}
         <p>Vous n'êtes actuellement abonné à aucun utilisateur.</p>
     {% endif %}
-<p style="font-weight: bold;">Abonnés</p >
+<h2 style="font-weight: bold;">Abonnés</h2 >
     {% if followers %}
         {% for follower in followers %}
-            <div style="display: flex;flex-direction: row;border: 1px solid black;align-items: baseline;
-            justify-content: space-between;">
+            <div class="container-suscriber">
                 <p>{{follower.followed_user}}</p>
             </div>    
         {% endfor %}

@@ -202,7 +202,7 @@ def follow_user(request):
     form = forms.FollowForm(user_exclude=user, follows_list=follows_list)
 
     if request.method == "POST":
-        form = forms.FollowForm(request.POST)
+        form = forms.FollowForm(request.POST, user_exclude=user, follows_list=follows_list)
 
         if form.is_valid():
             subscription = form.save(commit=False)

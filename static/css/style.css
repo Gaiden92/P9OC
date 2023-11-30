@@ -1,5 +1,40 @@
 *{font-family:Verdana, Geneva, Tahoma, sans-serif}
+
 body{margin: 0 5px;}
+
+a{
+    text-decoration: none;
+}
+p{
+    margin: 10px auto;
+}
+a:visited{
+    color: black;
+}
+input{
+    font-size: 15px;
+    text-align: center;
+    width: 200px;
+    padding: 5px;
+}
+h1{
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+    font-size: 15px;
+}
+
+h2{
+    margin-top: 0;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.section{
+    border: 1px solid black;
+    border-top: 0;
+    text-align:center;
+}
 .container{width: 800px;
     margin: 0 auto;
     display: flex;
@@ -7,20 +42,20 @@ body{margin: 0 5px;}
 }
 
 #header{border: 1px solid black;}
-h1{text-align: center;padding: 10px;margin: 5px;}
 
-form{border: 1px solid black;
+form{
     padding: 10px;
     margin: 0 auto;
-    border-radius: 20px;}
-
+    }
+a{
+    color: black;
+}
 a.link-button{
     background-color: #e9e9ed;
     border: 0.2px solid #8f8f9d;
-    border-radius: 5px;
-    padding: 5px;
+    border-radius: 2px;
+    padding: 5px 20px;
     font-size: 13px;
-    display: block;
     margin: auto;
     width: fit-content;
     text-decoration: none;
@@ -29,6 +64,8 @@ a.link-button{
 div.form-login > form > button{
     margin: 0 auto;
     display: block;
+    padding: 5px 20px;
+    font-size: 13px;
 } 
 
 /* MENU */
@@ -36,7 +73,6 @@ nav.nav-menu{
     position: absolute;
     right: 20px;
     top: 0;
-    padding: 10px;
 }
 ul.ul-menu{
     list-style: none;
@@ -50,4 +86,108 @@ ul.ul-menu > li{
 ul.ul-menu > li > a{
     text-decoration: none;
     cursor: pointer;
+    font-size: 15px;
+}
+
+/* Signup form */
+
+form.signup-form{
+    width: 300px;
+    display: grid;
+    grid-template-areas:
+        "a"
+        "b"
+        "c"
+        "d";
+}
+div.buttons-submit-container{
+text-align: end;
+margin-top: 30px;
+}
+
+div.buttons-submit-container > button{
+    padding: 4px 20px;
+    cursor: pointer;
+    font-size: 13px;
+
+}
+
+div.buttons-submit-container > a{
+    display: inline;
+}
+
+/*Flux*/
+div.flex{
+    display: flex;
+    flex-direction: row;
+    padding: 20px auto;
+}
+
+div.flex > p{
+    padding: 10px 50px;
+    
+}
+div.my-feed{
+    width: 600px;margin: 40px auto;
+}
+div.post{
+    border: 1px solid black;margin: 20px auto;padding: 10px;
+}
+
+div.post > p.container-link{
+    text-align: end;
+}
+
+
+p.date-published-ticket, p.date-published-review, li.date-published-ticket{
+    text-align: right;
+    font-size: 13px;
+}
+
+p.rate, p.headline-review{
+    display: inline;
+    vertical-align: top;
+}
+
+div.ticket-review{
+    border: 1px solid black;
+    margin: 0 auto;
+    padding: 10px;
+}
+div.ticket-review > ul, div.ticket > ul{
+    padding: 0;
+}
+div.ticket-review > ul > li, div.ticket > ul > li{
+    margin: 10px 0;
+
+}
+
+/*Pages Abonnements*/
+form.suscribe-form{
+    text-align: center;
+}
+
+form.suscribe-form > select{
+    width: 600px;
+    font-size: 20px;
+    text-align: center;
+}
+div.container-suscriber{
+    display: table;
+    width: 98vw;
+    margin: 0 auto;
+}
+
+
+div.container-suscriber > p, div.container-suscriber > a{
+    text-align: left;
+    margin: 0;
+    display: table-cell;
+    width: 80vh;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+div.container-suscriber > a{
+    width: 10vh;
 }

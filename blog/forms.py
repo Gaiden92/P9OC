@@ -33,9 +33,13 @@ class FollowForm(forms.ModelForm):
     class Meta:
         model = models.UserFollows
         fields = ["user"]
+        labels = {
+            "user": "" 
+        }
 
     def __init__(self, *args, user_exclude=None, follows_list=None) -> None:
         super(FollowForm, self).__init__(*args)
+        self.fields['user'].empty_label = "Nom d'utilisateur"
 
         if user_exclude:
             self.fields['user'].queryset = a_models.User.objects.all()\

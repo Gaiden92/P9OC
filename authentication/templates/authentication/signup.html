@@ -1,19 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="section">
 
-<h2>Inscrivez-vous</h2>
+    <h2>Inscrivez-vous</h2>
 
-{% if form.errors %}
-    {{ errors }}
-{% endif %}
+    {% if form.errors %}
+        {{ errors }}
+    {% endif %}
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
+    <form method="post" class="signup-form">
+        {% csrf_token %}
+        {{ form.as_p }}
 
-    <a href="{% url 'login' %}" class="link-button">Retourner</a>
-    <button type="submit">S'inscrire</button>
-</form>
+        <div class="buttons-submit-container">
+            <a href="{% url 'login' %}" class="link-button">Retourner</a>
+            <button type="submit">S'inscrire</button>
+        </div>
+        
+    </form>
+
+</div>
+
 
 {% endblock content %}
