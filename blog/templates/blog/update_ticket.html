@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h2>Modifier votre ticket</h2>
 
-<form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data" class="ticket-form">
 
     {% csrf_token %}
     {{ form.as_p }}

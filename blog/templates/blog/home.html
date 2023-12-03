@@ -11,31 +11,22 @@
         {% for post in posts %}
             <div class="post" data-aos="fade-up">
                 
-                {% if post.content_type == 'Ticket' %}
-                   
-                    <p>
-                        {% if post.user == user %}
-                        Vous avez
-                        {% else %}
-                        {{ post.user|capfirst }} a
-                        {% endif %} demandé une critique
-                    </p>
-
-                    
+                {% if post.content_type == 'Ticket' %}                   
                     {% include 'blog/ticket.html' %}
                     {% if not post.id in tickets_ids_reviewed %}
                         <p class="container-link"><a class="link-button" href="{% url 'create-review' post.id %}">Créer une critique</a></p>
                     {% endif%}
                 {% elif post.content_type == 'Review' %}
-                    {% if post.user == user %}
-                        <p>Vous avez publié une critique</p>
-                    {% else %}
-                        <p>{{ post.user }} a publié une critique</p>
-                    {% endif %}
+                   
                     {% include "blog/review.html" %}
                 {% endif %}
             </div>
         {% endfor%}
+    {% else %}
+    <div class="text-center">
+        <p>Vous n'avez actuellement aucun posts à visualiser</p>
+    </div>
+    
     {% endif %}
 </div>
 {% endblock content %}

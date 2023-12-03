@@ -1,6 +1,13 @@
 <div class="ticket">
         <ul style="list-style: none;">
-            <li class="date-published-ticket">{{post.time_created}}</li>
+            <li>
+                {% if post.user == user %}
+                    Vous avez publié un billet
+                {% else %}
+                    {{ post.user|capfirst }} a demandé une critique
+                {% endif %}  
+            </li>
+            <li class="date-published-ticket">{{post.time_created|date:'H:i, d F Y'}}</li>
             <li>{{post.title}}</li>
             <li>{{post.description}}</li>
             

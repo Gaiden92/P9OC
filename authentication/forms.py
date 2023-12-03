@@ -4,19 +4,37 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length=63, label='', widget=forms.TextInput(attrs={"placeholder": "Nom d'utilisateur"}))
-    password = forms.CharField(max_length=63, label='',
-                               widget=forms.PasswordInput(attrs={
-                                   "placeholder": "Mot de passe",
-                                   "col": 50,
-                                   }
-                                ))
+    username = forms.CharField(
+        max_length=63,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Nom d'utilisateur"}),
+    )
+    password = forms.CharField(
+        max_length=63,
+        label="",
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "Mot de passe",
+                "col": 50,
+            }
+        ),
+    )
 
 
 class SignupForm(UserCreationForm):
-    password1 = forms.CharField(max_length=63, label="", widget=forms.PasswordInput(attrs={'placeholder': 'Mot de passe'}))
-    password2 = forms.CharField(max_length=63, label="", widget=forms.PasswordInput(attrs={'placeholder': 'Confirmer mot de passe'}))
-    
+    password1 = forms.CharField(
+        max_length=63,
+        label="",
+        widget=forms.PasswordInput(attrs={"placeholder": "Mot de passe"}),
+    )
+    password2 = forms.CharField(
+        max_length=63,
+        label="",
+        widget=forms.PasswordInput(attrs={
+            "placeholder": "Confirmer mot de passe"}
+            ),
+    )
+
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
         fields = ("username",)
@@ -24,7 +42,8 @@ class SignupForm(UserCreationForm):
             "username": None,
         }
         widgets = {
-            "username": forms.TextInput(attrs={"placeholder": "Nom d'utilisateur"}),
+            "username": forms.TextInput(
+                attrs={"placeholder": "Nom d'utilisateur"}),
         }
         labels = {
             "username": "",

@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% if message %}
-    <p>{{ message }}</p>
+{% if user %}
+    <p class="message-error">{{ message }}</p>
 {% endif %}
 <div class="container">
     <div class="form-signup">

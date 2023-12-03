@@ -2,6 +2,7 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 
+
 from . import forms
 
 
@@ -11,6 +12,9 @@ def LogoutPageView(request):
 
 
 def LoginPageView(request):
+    user = request.user
+    if user.is_authenticated:
+        return redirect("home")
     form = forms.LoginForm()
     message = ""
     if request.method == "POST":
@@ -19,19 +23,23 @@ def LoginPageView(request):
             user = authenticate(
                 username=form.cleaned_data["username"],
                 password=form.cleaned_data["password"],
-                )
+            )
             if user is not None:
                 login(request, user)
                 return redirect("home")
             else:
                 message = "Identifiants invalides."
-    return render(request,
-                  "authentication/login.html",
-                  context={"form": form, "message": message}
-                  )
+    return render(
+        request,
+        "authentication/login.html",
+        context={"form": form, "message": message}
+    )
 
 
 def signup(request):
+    user = request.user
+    if user.is_authenticated:
+        return redirect("home")
     form = forms.SignupForm()
     if request.method == "POST":
         form = forms.SignupForm(request.POST)
@@ -42,5 +50,4 @@ def signup(request):
 
     return render(request,
                   "authentication/signup.html",
-                  context={"form": form}
-                  )
+                  context={"form": form})

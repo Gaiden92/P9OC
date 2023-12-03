@@ -1,21 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if ticket %}
-<div>
-    <ul>
-        <li>{{ ticket.title }}</li>
-        <li>{{ ticket.description }}</li>
-        <li>{{ ticket.time_created }}</li>
-        <li><img src="{{ ticket.image.url }}" alt="image {{ ticket.title }}"></li>
-    </ul>
-</div>
+{% if post %}
+        <div class="post ticket-border">
+            <p>Vous êtes entrain de poster en réponse à</p>
+            {% include 'blog/ticket.html' %}
+        </div>
+        
+
+    
 {% endif %}
 
-<form method="post">
+<form method="post" class="ticket-form">
     {% csrf_token %}
     {{ review_form.as_p }}
-    <input type="submit" value="Enregistrer">
+    <div class="text-align-right">
+        <input type="submit" value="Envoyer">
+    </div>
+    
 </form>
 
 {% endblock content %}

@@ -4,23 +4,32 @@
 
 <h2>Vos posts</h2>
 
-<div class="my-posts" style="width: 800px;margin: 0 auto;">
+<div class="my-posts">
 
     {% if posts %}
         {% for post in posts %}
-            <div class="post" data-aos="zoom-in" style="border: 1px solid black;width: 400px;margin: 0 auto;padding: 10px;">
+            <div class="post" data-aos="zoom-in">
                 {% if post.content_type == 'Ticket' %}
-                
+                    
                     {% include 'blog/ticket.html' %}
-                    <a href="{% url 'update-ticket' post.id %}">Modifier</a>
-                    <a href="{% url 'delete-ticket' post.id %}">Supprimer</a>
+                    <div class="text-align-right">
+                        <a href="{% url 'update-ticket' post.id %}" class="link-button">Modifier</a>
+                        <a href="{% url 'delete-ticket' post.id %}" class="link-button">Supprimer</a>
+                    </div>
+                    
                 {% elif post.content_type == 'Review' %}
                     {% include "blog/review.html" %}
-                    <a href="{% url 'update-review' post.id %}">Modifier</a>
-                    <a href="{% url 'delete-review' post.id %}">Supprimer</a>
+                    <div class="text-align-right">
+                        <a href="{% url 'update-review' post.id %}" class="link-button">Modifier</a>
+                        <a href="{% url 'delete-review' post.id %}" class="link-button">Supprimer</a>
+                    </div>
                 {% endif %}
             </div>
         {% endfor%}
+    {% else %}
+    <div class="text-center">
+        <p>Vous n'avez actuellement aucun posts à visualiser</p>
+    </div>
     {% endif %}
             
             

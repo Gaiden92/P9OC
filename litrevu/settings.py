@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-w)h#o(k3zgb^@8&3$&dl&s*t#sqwj5a!-te4a&r^i07%$spoyl"
+SECRET_KEY = "django-insecure-w)hspoyl"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -44,6 +44,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    # ligne permettant de mettre à jour le language par rapport au lieu
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -90,14 +92,17 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME": "django.contrib.auth.password_validation\
+            .MinimumLengthValidator",
         "OPTIONS": {
             "min_length": 8,
-        }
+        },
     },
+    # ajout validateur pour que le mot de passe contienne 1 lettre minimum
     {
-      "NAME": "authentication.validators.ContainsLetterValidator",
+        "NAME": "authentication.validators.ContainsLetterValidator",
     },
+    # ajout validateur pour que le mot de passe contienne 1 chiffre minimum
     {
         "NAME": "authentication.validators.ContainsNumberValidator",
     },
@@ -107,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'fr-fr'
+LANGUAGE_CODE = "en-US"
 
 TIME_ZONE = "UTC"
 
@@ -119,8 +124,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR.joinpath('static/')]
+# ajout de l'url pour les fichier css, js et photos du site
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [BASE_DIR.joinpath("static/")]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -129,11 +135,14 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "authentication.User"
 
+# ajout url page login
 LOGIN_URL = "login"
 
+# ajout url redirection après login
 LOGIN_REDIRECT_URL = "home"
 
-MEDIA_ROOT = BASE_DIR / 'media'
+# ajout rout du dossier média
+MEDIA_ROOT = BASE_DIR / "media"
 
-MEDIA_URL = '/media/'
-
+# ajout de l'url pour la route du dossier média
+MEDIA_URL = "/media/"

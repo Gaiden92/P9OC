@@ -29,7 +29,21 @@ h2{
     padding-top: 20px;
     text-align: center;
 }
-
+.text-center{
+    text-align: center;
+}
+p.message-error, ul.errorlist{
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+ul.errorlist{
+    list-style: none;
+}
+div.text-align-right{
+    text-align: right;
+    margin: 10px 0;
+}
 .section{
     border: 1px solid black;
     border-top: 0;
@@ -127,11 +141,11 @@ div.flex > p{
     padding: 10px 50px;
     
 }
-div.my-feed{
+div.my-feed, div.my-posts{
     width: 600px;margin: 40px auto;
 }
 div.post{
-    border: 1px solid black;margin: 20px auto;padding: 10px;
+    border: 1px solid black;margin: 20px auto;padding: 10px;width: 600px
 }
 
 div.post > p.container-link{
@@ -191,3 +205,43 @@ div.container-suscriber > p, div.container-suscriber > a{
 div.container-suscriber > a{
     width: 10vh;
 }
+
+/*Page créer un ticket*/
+form.ticket-form{
+    width: 600px;
+    border: 1px solid black;
+}
+form.ticket-form > p {
+    display: flex;
+    flex-direction: column;
+}
+form.ticket-form > p > label{
+    margin: 10px 0;
+}
+form.ticket-form > p > input[type=text]{
+    width: auto;
+}
+form.ticket-form > div.text-align-right{
+    text-align: right;
+}
+form.ticket-form > div.text-align-right > button{
+    padding: 5px 20px;
+    font-size: 13px;
+}
+
+/*Page créer ticket et critique*/
+#id_rating{
+    display: flex;
+    justify-content: space-between;
+}
+#id_rating > * > label > input{
+    width: auto;
+}
+
+/*Page créer critique (en réponse à un ticket)*/
+form.ticket-form > div.ticket, div.ticket-border > div.ticket{
+    border: 1px solid black;
+    padding: 10px;
+}
+
+/*Page posts*/

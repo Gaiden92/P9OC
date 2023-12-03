@@ -1,5 +1,12 @@
 <div>
-    <p class="date-published-review">{{ post.time_created }}</p>
+    <p>
+        {% if post.user == user %}
+            Vous avez publié une critique
+        {% else %}
+            {{ post.user|capfirst }} a publié une critique
+        {% endif %}  
+    </p>
+    <p class="date-published-review">{{ post.time_created|date:'H:i, d F Y' }}</p>
     <p class="headline-review">{{ post.headline }} - </p>
     <p class="rate">{{ post.rating }}</p>
     <p>{{ post.body }}</p>

@@ -3,10 +3,13 @@
 {% block content %}
 
     <h2>Créer un ticket</h2>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" class="ticket-form">
         {{ form.as_p }}
         {% csrf_token %}
-        <button type="submit" >Envoyer</button>
+        <div class="text-align-right">
+            <button type="submit" >Envoyer</button>
+        </div>
+        
     </form>
 
 {% endblock content %}
