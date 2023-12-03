@@ -16,7 +16,10 @@
         <form method="post">
             {{ form.as_p }}
             {% csrf_token %}
-            <button type="submit">Se connecter</button>
+            <div class="text-align-right">
+                <button type="submit">Se connecter</button>
+            </div>
+            
         </form>
     </div>
 </div>

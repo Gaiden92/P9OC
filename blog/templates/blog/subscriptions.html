@@ -15,7 +15,9 @@
         {% for follow in follows %}
             <div class="container-suscriber">
                 <p>{{follow.user}}</p>
-                <a href="{% url 'unfollow' follow.id %}">Désabonner</a>
+                <a href="{% url 'unfollow' follow.id %}" title="se désabonner de {{ follow.user}}">
+                    Désabonner
+                </a>
             </div> 
         {% endfor %}
 

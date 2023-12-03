@@ -4,8 +4,16 @@
 
 <div class="my-feed">
     <div class="flex">
-        <p><a class="link-button" href="{% url 'create-ticket' %}">Demander une critique</a></p>
-        <p><a class="link-button" href="{% url 'create-ticket-and-review' %}">Créer une critique</a></p>
+        <p>
+            <a class="link-button" href="{% url 'create-ticket' %}" title="demander une critique">
+                Demander une critique
+            </a>
+        </p>
+        <p>
+            <a class="link-button" href="{% url 'create-ticket-and-review' %}" title="créer une critique">
+                Créer une critique
+            </a>
+        </p>
     </div>
     {% if posts %}
         {% for post in posts %}
@@ -14,7 +22,11 @@
                 {% if post.content_type == 'Ticket' %}                   
                     {% include 'blog/ticket.html' %}
                     {% if not post.id in tickets_ids_reviewed %}
-                        <p class="container-link"><a class="link-button" href="{% url 'create-review' post.id %}">Créer une critique</a></p>
+                        <p class="container-link">
+                            <a class="link-button" href="{% url 'create-review' post.id %}" title="créer une critique">
+                                Créer une critique
+                            </a>
+                        </p>
                     {% endif%}
                 {% elif post.content_type == 'Review' %}
                    

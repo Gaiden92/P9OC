@@ -13,15 +13,27 @@
                     
                     {% include 'blog/ticket.html' %}
                     <div class="text-align-right">
-                        <a href="{% url 'update-ticket' post.id %}" class="link-button">Modifier</a>
-                        <a href="{% url 'delete-ticket' post.id %}" class="link-button">Supprimer</a>
+                        <a href="{% url 'update-ticket' post.id %}" class="link-button"
+                        title="modifier un billet">
+                            Modifier
+                        </a>
+                        <a href="{% url 'delete-ticket' post.id %}" class="link-button"
+                        title="supprimer un billet">
+                            Supprimer
+                        </a>
                     </div>
                     
                 {% elif post.content_type == 'Review' %}
                     {% include "blog/review.html" %}
                     <div class="text-align-right">
-                        <a href="{% url 'update-review' post.id %}" class="link-button">Modifier</a>
-                        <a href="{% url 'delete-review' post.id %}" class="link-button">Supprimer</a>
+                        <a href="{% url 'update-review' post.id %}" class="link-button"
+                        title="modifier la critique">
+                            Modifier
+                        </a>
+                        <a href="{% url 'delete-review' post.id %}" class="link-button"
+                        title="supprimer la critique">
+                            Supprimer
+                        </a>
                     </div>
                 {% endif %}
             </div>
@@ -31,7 +43,6 @@
         <p>Vous n'avez actuellement aucun posts à visualiser</p>
     </div>
     {% endif %}
-            
             
 </div>
 {% endblock content %}

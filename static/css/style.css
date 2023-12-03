@@ -11,12 +11,18 @@ p{
 a:visited{
     color: black;
 }
-input{
+input, a, button{
     font-size: 15px;
     text-align: center;
     width: 200px;
     padding: 5px;
+    cursor: pointer;
 }
+input[type=text], input[type=password]{
+    cursor:text
+}
+input:focus-visible{outline: none;}
+
 h1{
     text-align: center;
     padding: 10px;
@@ -64,23 +70,15 @@ form{
 a{
     color: black;
 }
-a.link-button{
+a.link-button, div.form-login > form > button{
     background-color: #e9e9ed;
     border: 0.2px solid #8f8f9d;
     border-radius: 2px;
-    padding: 5px 20px;
-    font-size: 13px;
     margin: auto;
-    width: fit-content;
+    display: inline-block;
     text-decoration: none;
 }
 
-div.form-login > form > button{
-    margin: 0 auto;
-    display: block;
-    padding: 5px 20px;
-    font-size: 13px;
-} 
 
 /* MENU */
 nav.nav-menu{
@@ -105,7 +103,7 @@ ul.ul-menu > li > a{
 
 /* Signup form */
 
-form.signup-form{
+form.signup-form, div.form-login > form{
     width: 300px;
     display: grid;
     grid-template-areas:
@@ -114,22 +112,18 @@ form.signup-form{
         "c"
         "d";
 }
+form.signup-form > p > input, div.form-login > form > p > input{
+    width: 300px;
+    }
 div.buttons-submit-container{
 text-align: end;
 margin-top: 30px;
 }
 
-div.buttons-submit-container > button{
-    padding: 4px 20px;
-    cursor: pointer;
-    font-size: 13px;
 
+div.buttons-submit-container > a.link-button , div.buttons-submit-container > button{
+    width: 100px;
 }
-
-div.buttons-submit-container > a{
-    display: inline;
-}
-
 /*Flux*/
 div.flex{
     display: flex;
@@ -224,10 +218,7 @@ form.ticket-form > p > input[type=text]{
 form.ticket-form > div.text-align-right{
     text-align: right;
 }
-form.ticket-form > div.text-align-right > button{
-    padding: 5px 20px;
-    font-size: 13px;
-}
+
 
 /*Page créer ticket et critique*/
 #id_rating{
@@ -244,4 +235,11 @@ form.ticket-form > div.ticket, div.ticket-border > div.ticket{
     padding: 10px;
 }
 
-/*Page posts*/
+/*Page critique*/
+div.review{
+    width: 600px;
+    margin: 0 auto;
+    border: 1px solid black;
+    text-align: left;
+    padding: 5px;
+}

@@ -23,7 +23,7 @@ from authentication import views as auth_views
 from blog import views as blog_views
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("admin-panel/", admin.site.urls),
     path("", auth_views.LoginPageView, name="login"),
     path("logout/", auth_views.LogoutPageView, name="logout"),
     path("home/", blog_views.home, name="home"),

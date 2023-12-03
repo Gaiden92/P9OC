@@ -8,12 +8,26 @@ from . import forms, models
 
 
 @login_required
-def home(request):
+def home(request: str) -> object:
+    """Fonction permettant d'afficher la vue "home"
+    et le flux
+
+    Arguments:
+        request -- une requête
+
+    Returns:
+        un objet HttpResponse avec la liste des postes
+        (billets et critiques) ainsi que la liste des id 
+        des billets ayant déjà reçus une critique.
+    """
+    # Récupération de l'utilisateur, de ses billets
+    # et de ses critiques
     current_user = request.user
     tickets = models.Ticket.objects.filter(user=current_user)
     reviews = models.Review.objects.filter(user=current_user)
 
-    # Récupération des Abonnés
+    # Récupération des Abonnés, de leurs billets
+    # et de leurs critiques
     users_followed = current_user.followed_by.all()
 
     users_followed_data = users_followed.values("user")
@@ -59,7 +73,16 @@ def home(request):
 
 
 @login_required
-def AllPostsView(request):
+def AllPostsView(request: str) -> object:
+    """Fonction permettant d'afficher la vue "posts"
+
+    Arguments:
+        request -- une requête
+
+    Returns:
+        un objet HttpResponse contenant la liste des billets
+        et des critiques de l'utilisateur.
+    """
     current_user = request.user
     tickets = models.Ticket.objects.filter(user=current_user)
     reviews = models.Review.objects.filter(user=current_user)
@@ -75,7 +98,16 @@ def AllPostsView(request):
 
 
 @login_required
-def create_ticket(request):
+def create_ticket(request: str) -> object:
+    """Fonction permettant de créer un billet.
+
+    Arguments:
+        request -- une requête
+
+    Returns:
+        un objet HttpResponse contenant le formulaire
+        de sauvegarde d'un billet.
+    """
     form = forms.TicketForm(label_suffix="")
     if request.method == "POST":
         form = forms.TicketForm(request.POST, request.FILES, label_suffix="")
@@ -89,42 +121,71 @@ def create_ticket(request):
 
 
 @login_required
-def update_ticket(request, ticket_id):
-    ticket = get_object_or_404(models.Ticket, id=ticket_id)
+def update_ticket(request: str, ticket_id: int) -> object:
+    """Fonction permettant de modifier un billet.
+
+    Arguments:
+        request -- une requête
+        ticket_id -- l'id du billet à modifier
+
+    Returns:
+        un objet HttpResponss contenant le formulaire
+        de mise à jour du billet.
+    """
+    post = get_object_or_404(models.Ticket, id=ticket_id)
     if request.method == "POST":
         form = forms.TicketForm(
-            request.POST, request.FILES, instance=ticket, label_suffix=""
+            request.POST, request.FILES, instance=post, label_suffix=""
         )
 
         if form.is_valid():
             form.save()
             return redirect("posts")
     else:
-        form = forms.TicketForm(instance=ticket, label_suffix="")
+        form = forms.TicketForm(instance=post, label_suffix="")
     return render(request, "blog/update_ticket.html", context={"form": form})
 
 
 @login_required
-def delete_ticket(request, ticket_id):
-    ticket = get_object_or_404(models.Ticket, id=ticket_id)
+def delete_ticket(request: str, ticket_id: int) -> object:
+    """Fonction permettant de supprimer un billet.
+
+    Arguments:
+        request -- une requête
+        ticket_id -- l'idée du ticket à supprimer
+
+    Returns:
+        un objet HttpResponse contenant le formulaire
+        de suppression d'un billet.
+    """
+    post = get_object_or_404(models.Ticket, id=ticket_id)
     if request.method == "POST":
-        ticket.delete()
+        post.delete()
         return redirect("posts")
 
     return render(request,
                   "blog/delete_ticket.html",
-                  context={"ticket": ticket})
+                  context={"post": post})
 
 
 @login_required
-def ticket_view(request, post_id):
+def ticket_view(request: str, post_id: int) -> object:
     ticket = get_object_or_404(models.Ticket, id=post_id)
 
     return render(request, "blog/ticket.html", context={"ticket": ticket})
 
 
 @login_required
-def create_ticket_and_review(request):
+def create_ticket_and_review(request: str) -> object:
+    """Fonction permettant de créer un billet et une critique.
+
+    Arguments:
+        request -- une requête
+
+    Returns:
+        un objet HttpResponse contenant le formulaire
+        de création d'un billet et d'une critique.
+    """
     ticket_form = forms.TicketForm(label_suffix="")
     review_form = forms.ReviewForm(label_suffix="")
 
@@ -148,7 +209,17 @@ def create_ticket_and_review(request):
 
 
 @login_required
-def create_review(request, ticket_id):
+def create_review(request: str, ticket_id: int) -> object:
+    """Fonction permettant de créer une critique.
+
+    Arguments:
+        request -- une requête
+        ticket_id -- l'id d'un billet
+
+    Returns:
+        un objet HttpResponse contenant le formulaire
+        de création d'une critique.
+    """
     post = get_object_or_404(models.Ticket, id=ticket_id)
     review_form = forms.ReviewForm()
 
@@ -168,7 +239,17 @@ def create_review(request, ticket_id):
 
 
 @login_required
-def update_review(request, review_id):
+def update_review(request: str, review_id: int) -> object:
+    """Fonction permettant de mettre à jour une critique.
+
+    Arguments:
+        request -- une requête
+        review_id -- l'id de la critique à modifier
+
+    Returns:
+        un objet HttpResponse contenant le formulaire
+        de modification d'une critique.
+    """
     review = get_object_or_404(models.Review, id=review_id)
     post = review.ticket
     if request.method == "POST":
@@ -186,24 +267,47 @@ def update_review(request, review_id):
 
 
 @login_required
-def delete_review(request, review_id):
-    review = get_object_or_404(models.Review, id=review_id)
+def delete_review(request: str, review_id: int) -> object:
+    """Fonction permettant de supprimer une critique.
+
+    Arguments:
+        request -- une requête
+        review_id -- l'id de la critique à supprimer
+
+    Returns:
+        un objet HttpResponse contenant le formulaire
+        de suppression d'une critique.
+    """
+    post = get_object_or_404(models.Review, id=review_id)
     if request.method == "POST":
-        review.delete()
+        post.delete()
         return redirect("posts")
 
     return render(request,
                   "blog/delete_review.html",
-                  context={"review": review})
+                  context={"post": post})
 
 
 @login_required
-def follow_user(request):
+def follow_user(request: str) -> object:
+    """Fonction permettant à l'utilisateur 
+    de s'abonner à un autre utilisateur.
+
+    Arguments:
+        request -- une requête
+
+    Returns:
+        un objet HttpResponse contenant le formulaire d'abonnement
+        ainsi que la liste des abonnés et des abonnements.
+    """
     user = request.user
     follows = models.UserFollows.objects.filter(followed_user=user)
     followers = models.UserFollows.objects.filter(user=user)
 
+    # Récupération de la liste des utilisateur déjà suivis
     follows_list = [follow.user for follow in follows]
+    # Exclusion de l'utilisateur connecté ainsi que 
+    # des utilisateurs déjà suivis
     form = forms.FollowForm(user_exclude=user, follows_list=follows_list)
 
     if request.method == "POST":
@@ -225,7 +329,17 @@ def follow_user(request):
 
 
 @login_required
-def unfollow_user(request, user_follow_id):
+def unfollow_user(request: str, user_follow_id: int) -> object:
+    """Fonction permettant de se désabonner d'un utilisateur.
+
+    Arguments:
+        request -- une requête
+        user_follow_id -- l'id de l'utilisateur à se désabonner
+
+    Returns:
+        un objet HttpResponse contenant le formulaire 
+        de désabonnement
+    """
     user_follow = get_object_or_404(models.UserFollows, id=user_follow_id)
     if request.method == "POST":
         user_follow.delete()
