@@ -25,7 +25,7 @@ class TicketForm(forms.ModelForm):
         forms -- a ticket's model form
     """
     image = forms.ImageField(
-        label_suffix="", required=True, widget=MyClearableFileInput, label=""
+        label_suffix="", required=False, widget=MyClearableFileInput, label=""
     )
 
     class Meta:
