@@ -26,7 +26,9 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("password", models.CharField(max_length=128, verbose_name="password")),
+                ("password",
+                 models.CharField(max_length=128,
+                                  verbose_name="password")),
                 (
                     "last_login",
                     models.DateTimeField(
@@ -37,7 +39,9 @@ class Migration(migrations.Migration):
                     "is_superuser",
                     models.BooleanField(
                         default=False,
-                        help_text="Designates that this user has all permissions without explicitly assigning them.",
+                        help_text="Designates that this user has \
+                                all permissions without \
+                                explicitly assigning them.",
                         verbose_name="superuser status",
                     ),
                 ),
@@ -45,9 +49,11 @@ class Migration(migrations.Migration):
                     "username",
                     models.CharField(
                         error_messages={
-                            "unique": "A user with that username already exists."
+                            "unique": "A user with that \
+                            username already exists."
                         },
-                        help_text="Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+                        help_text="Required. 150 characters or fewer.\
+                              Letters, digits and @/./+/-/_ only.",
                         max_length=150,
                         unique=True,
                         validators=[

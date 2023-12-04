@@ -9,16 +9,16 @@ from . import forms, models
 
 @login_required
 def home(request: str) -> object:
-    """Fonction permettant d'afficher la vue "home"
-    et le flux
+    """Function to display the "home" view
+    and the flow
 
     Arguments:
-        request -- une requête
+        request -- a request
 
     Returns:
-        un objet HttpResponse avec la liste des postes
-        (billets et critiques) ainsi que la liste des id 
-        des billets ayant déjà reçus une critique.
+        an HttpResponse object with the list of positions
+        (tickets and reviews) as well as the list of id
+        posts that have already received a review.
     """
     # Récupération de l'utilisateur, de ses billets
     # et de ses critiques
@@ -74,14 +74,14 @@ def home(request: str) -> object:
 
 @login_required
 def AllPostsView(request: str) -> object:
-    """Fonction permettant d'afficher la vue "posts"
+    """Function to display the "posts" view
 
     Arguments:
-        request -- une requête
+        request -- a request
 
     Returns:
-        un objet HttpResponse contenant la liste des billets
-        et des critiques de l'utilisateur.
+        an HttpResponse object containing the list of tickets
+        and user reviews.
     """
     current_user = request.user
     tickets = models.Ticket.objects.filter(user=current_user)
@@ -99,14 +99,14 @@ def AllPostsView(request: str) -> object:
 
 @login_required
 def create_ticket(request: str) -> object:
-    """Fonction permettant de créer un billet.
+    """Function to create a ticket.
 
     Arguments:
-        request -- une requête
+        request -- a request
 
     Returns:
-        un objet HttpResponse contenant le formulaire
-        de sauvegarde d'un billet.
+        an HttpResponse object containing the form
+        saving a ticket.
     """
     form = forms.TicketForm(label_suffix="")
     if request.method == "POST":
@@ -122,15 +122,15 @@ def create_ticket(request: str) -> object:
 
 @login_required
 def update_ticket(request: str, ticket_id: int) -> object:
-    """Fonction permettant de modifier un billet.
+    """Function allowing you to modify a ticket.
 
     Arguments:
-        request -- une requête
-        ticket_id -- l'id du billet à modifier
+        request -- a request
+        ticket_id -- the id of the ticket to modify
 
     Returns:
-        un objet HttpResponss contenant le formulaire
-        de mise à jour du billet.
+        an HttpResponss object containing the form
+        to update the ticket.
     """
     post = get_object_or_404(models.Ticket, id=ticket_id)
     if request.method == "POST":
@@ -148,15 +148,15 @@ def update_ticket(request: str, ticket_id: int) -> object:
 
 @login_required
 def delete_ticket(request: str, ticket_id: int) -> object:
-    """Fonction permettant de supprimer un billet.
+    """Function to delete a ticket.
 
     Arguments:
-        request -- une requête
-        ticket_id -- l'idée du ticket à supprimer
+        request -- a request
+        ticket_id -- the idea of ​​the ticket to delete
 
     Returns:
-        un objet HttpResponse contenant le formulaire
-        de suppression d'un billet.
+        an HttpResponse object containing the form
+        deleting a ticket.
     """
     post = get_object_or_404(models.Ticket, id=ticket_id)
     if request.method == "POST":
@@ -177,14 +177,14 @@ def ticket_view(request: str, post_id: int) -> object:
 
 @login_required
 def create_ticket_and_review(request: str) -> object:
-    """Fonction permettant de créer un billet et une critique.
+    """Function to create a post and a review.
 
     Arguments:
-        request -- une requête
+        request -- a request
 
     Returns:
-        un objet HttpResponse contenant le formulaire
-        de création d'un billet et d'une critique.
+        an HttpResponse object containing the form
+        creating a post and a review.
     """
     ticket_form = forms.TicketForm(label_suffix="")
     review_form = forms.ReviewForm(label_suffix="")
@@ -210,15 +210,15 @@ def create_ticket_and_review(request: str) -> object:
 
 @login_required
 def create_review(request: str, ticket_id: int) -> object:
-    """Fonction permettant de créer une critique.
+    """Function to create a review.
 
     Arguments:
-        request -- une requête
-        ticket_id -- l'id d'un billet
+        request -- a request
+        ticket_id -- the id of a ticket
 
     Returns:
-        un objet HttpResponse contenant le formulaire
-        de création d'une critique.
+        an HttpResponse object containing the form
+        creating a review.
     """
     post = get_object_or_404(models.Ticket, id=ticket_id)
     review_form = forms.ReviewForm()
@@ -240,15 +240,15 @@ def create_review(request: str, ticket_id: int) -> object:
 
 @login_required
 def update_review(request: str, review_id: int) -> object:
-    """Fonction permettant de mettre à jour une critique.
+    """Function to update a review.
 
     Arguments:
-        request -- une requête
-        review_id -- l'id de la critique à modifier
+        request -- a request
+        review_id -- the id of the review to modify
 
     Returns:
-        un objet HttpResponse contenant le formulaire
-        de modification d'une critique.
+        an HttpResponse object containing the form
+        modifying a review.
     """
     review = get_object_or_404(models.Review, id=review_id)
     post = review.ticket
@@ -268,15 +268,15 @@ def update_review(request: str, review_id: int) -> object:
 
 @login_required
 def delete_review(request: str, review_id: int) -> object:
-    """Fonction permettant de supprimer une critique.
+    """Function to delete a review.
 
     Arguments:
-        request -- une requête
-        review_id -- l'id de la critique à supprimer
+        request -- a request
+        review_id -- the id of the review to delete
 
     Returns:
-        un objet HttpResponse contenant le formulaire
-        de suppression d'une critique.
+        an HttpResponse object containing the form
+        deleting a review.
     """
     post = get_object_or_404(models.Review, id=review_id)
     if request.method == "POST":
@@ -290,15 +290,15 @@ def delete_review(request: str, review_id: int) -> object:
 
 @login_required
 def follow_user(request: str) -> object:
-    """Fonction permettant à l'utilisateur 
-    de s'abonner à un autre utilisateur.
+    """Function allowing the user
+    to subscribe to another user.
 
     Arguments:
-        request -- une requête
+        request -- a request
 
     Returns:
-        un objet HttpResponse contenant le formulaire d'abonnement
-        ainsi que la liste des abonnés et des abonnements.
+        an HttpResponse object containing the subscription form
+        as well as the list of subscribers and subscriptions.
     """
     user = request.user
     follows = models.UserFollows.objects.filter(followed_user=user)
@@ -306,7 +306,7 @@ def follow_user(request: str) -> object:
 
     # Récupération de la liste des utilisateur déjà suivis
     follows_list = [follow.user for follow in follows]
-    # Exclusion de l'utilisateur connecté ainsi que 
+    # Exclusion de l'utilisateur connecté ainsi que
     # des utilisateurs déjà suivis
     form = forms.FollowForm(user_exclude=user, follows_list=follows_list)
 
@@ -330,15 +330,15 @@ def follow_user(request: str) -> object:
 
 @login_required
 def unfollow_user(request: str, user_follow_id: int) -> object:
-    """Fonction permettant de se désabonner d'un utilisateur.
+    """Function to unsubscribe from a user.
 
     Arguments:
-        request -- une requête
-        user_follow_id -- l'id de l'utilisateur à se désabonner
+        request -- a request
+        user_follow_id -- the id of the user to unfollow
 
     Returns:
-        un objet HttpResponse contenant le formulaire 
-        de désabonnement
+        an HttpResponse object containing the form
+        unsubscribe
     """
     user_follow = get_object_or_404(models.UserFollows, id=user_follow_id)
     if request.method == "POST":

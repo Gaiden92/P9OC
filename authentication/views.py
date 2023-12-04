@@ -6,12 +6,31 @@ from django.contrib.auth import authenticate, login, logout
 from . import forms
 
 
-def LogoutPageView(request):
+def logout_view(request: str) -> object:
+    """Function allowing a user to
+    connect.
+
+    Arguments:
+        request -- str: a request
+
+    Returns:
+        object: an HttpResponse object containing the form
+        disconnection.
+    """
     logout(request)
     return redirect("login")
 
 
-def LoginPageView(request):
+def login_view(request: str) -> object:
+    """Function allowing a user to log in.
+
+    Arguments:
+        request -- str: a request
+
+    Returns:
+        object: an HttpResponse object containing the form
+        connection.
+    """
     user = request.user
     if user.is_authenticated:
         return redirect("home")
@@ -36,7 +55,16 @@ def LoginPageView(request):
     )
 
 
-def signup(request):
+def signup_view(request: str) -> object:
+    """Function allowing a user to register.
+
+    Arguments:
+        request -- str: a request
+
+    Returns:
+        object: an HttpResponse object containing the form
+        registration.
+    """
     user = request.user
     if user.is_authenticated:
         return redirect("home")

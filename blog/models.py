@@ -4,6 +4,15 @@ from django.db import models
 
 
 class Ticket(models.Model):
+    """A class representation of a ticket.
+
+    Arguments:
+        models -- a model class
+
+    Methods:
+        __str__ -- return the string representation
+                    of the class
+    """
     user = models.ForeignKey(
         to=settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
@@ -20,6 +29,15 @@ class Ticket(models.Model):
 
 
 class Review(models.Model):
+    """A class representation of a review
+
+    Arguments:
+        models -- a class model
+
+    Methods:
+        __str__ -- return the string representation
+                    of the class
+    """
     ratechoices = (
         ("1", 1),
         ("2", 2),
@@ -44,6 +62,11 @@ class Review(models.Model):
 
 
 class UserFollows(models.Model):
+    """A class representation of the suscribe system.
+
+    Arguments:
+        models -- a class model
+    """
     user = models.ForeignKey(
         to=settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,

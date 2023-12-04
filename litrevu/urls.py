@@ -24,8 +24,8 @@ from blog import views as blog_views
 
 urlpatterns = [
     path("admin-panel/", admin.site.urls),
-    path("", auth_views.LoginPageView, name="login"),
-    path("logout/", auth_views.LogoutPageView, name="logout"),
+    path("", auth_views.login_view, name="login"),
+    path("logout/", auth_views.logout_view, name="logout"),
     path("home/", blog_views.home, name="home"),
     path("subscriptions/", blog_views.follow_user, name="subscriptions"),
     path(
@@ -33,7 +33,7 @@ urlpatterns = [
         blog_views.unfollow_user,
         name="unfollow",
     ),
-    path("signup/", auth_views.signup, name="signup"),
+    path("signup/", auth_views.signup_view, name="signup"),
     path("create-ticket/", blog_views.create_ticket, name="create-ticket"),
     path("posts/", blog_views.AllPostsView, name="posts"),
     path("ticket/<int:post_id>/", blog_views.ticket_view, name="ticket-view"),

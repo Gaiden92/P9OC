@@ -6,6 +6,12 @@ from django.forms.widgets import ClearableFileInput
 
 
 class MyClearableFileInput(ClearableFileInput):
+    """A class representation of a clearable
+    file input
+
+    Arguments:
+        ClearableFileInput -- a class clearablefileinput
+    """
     initial_text = ""
     input_text = "Télécharger"
     clear_checkbox_label = ""
@@ -13,6 +19,11 @@ class MyClearableFileInput(ClearableFileInput):
 
 
 class TicketForm(forms.ModelForm):
+    """A class representation of a ticket form
+
+    Arguments:
+        forms -- a ticket's model form
+    """
     image = forms.ImageField(
         label_suffix="", required=True, widget=MyClearableFileInput, label=""
     )
@@ -23,10 +34,17 @@ class TicketForm(forms.ModelForm):
         widgets = {
             "description": forms.Textarea(attrs={"rows": 10, "cols": 50}),
         }
-        labels = {"title": "Titre", "description": "Description", "image": "Hello"}
+        labels = {"title": "Titre",
+                  "description": "Description",
+                  "image": "Hello"}
 
 
 class ReviewForm(forms.ModelForm):
+    """A class representation of a review form.
+
+    Arguments:
+        forms -- a review's model form
+    """
     class Meta:
         model = models.Review
         fields = ["headline", "rating", "body"]
@@ -38,12 +56,26 @@ class ReviewForm(forms.ModelForm):
 
 
 class FollowForm(forms.ModelForm):
+    """A class representation of a suscribe form
+
+    Arguments:
+        forms -- a follow's model form
+    """
     class Meta:
         model = models.UserFollows
         fields = ["user"]
         labels = {"user": ""}
 
-    def __init__(self, *args, user_exclude=None, follows_list=None) -> None:
+    def __init__(self, *args,
+                 user_exclude: object = None,
+                 follows_list: list = None
+                 ) -> None:
+        """A class constructor for a follow form.
+
+        Keyword Arguments:
+            user_exclude -- the actual user (default: {None})
+            follows_list -- the user's follows list (default: {None})
+        """
         super(FollowForm, self).__init__(*args)
         self.fields["user"].empty_label = "Nom d'utilisateur"
 
