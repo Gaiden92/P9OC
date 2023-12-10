@@ -11,8 +11,8 @@
     
     <form method="post">
         {% csrf_token %}
-        <input type="submit" value="Supprimer">
-        <a href="{% url 'posts' %}">Retour à mes posts</a>
+        <input type="submit" value="Supprimer" title="supprimer">
+        <a href="{% url 'posts' %}" title="retour au posts">Retour à mes posts</a>
     </form>
 </div>
 

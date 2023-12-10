@@ -50,13 +50,24 @@ pip install -r requirements.txt
 
 ## Utilisation
 
-1. Lancer le serveur Django:
+1. Effectuer les migrations
+
+```
+python manage.py makemigrations
+
+```
+python manage.py migrate
+
+```
+
+2. Lancer le serveur Django:
 
 ```
 python manage.py runserver
+
 ```
 
-2. Dans le navigateur de votre choix, se rendre à l'adresse http://127.0.0.1:8000/
+3. Dans le navigateur de votre choix, se rendre à l'adresse http://127.0.0.1:8000/
 
 
 ## Infos
