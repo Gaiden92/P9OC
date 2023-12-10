@@ -54,12 +54,9 @@ pip install -r requirements.txt
 
 ```
 python manage.py makemigrations
-
-```
 python manage.py migrate
 
 ```
-
 2. Lancer le serveur Django:
 
 ```
