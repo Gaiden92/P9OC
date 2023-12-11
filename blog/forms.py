@@ -14,7 +14,7 @@ class MyClearableFileInput(ClearableFileInput):
     """
     initial_text = ""
     input_text = "Télécharger"
-    clear_checkbox_label = ""
+    clear_checkbox_label = "Effacer"
     template_name = "blog/my_clearable_file_input.html"
 
 
@@ -36,7 +36,7 @@ class TicketForm(forms.ModelForm):
         }
         labels = {"title": "Titre",
                   "description": "Description",
-                  "image": "Hello"}
+                  "image": ""}
 
 
 class ReviewForm(forms.ModelForm):
