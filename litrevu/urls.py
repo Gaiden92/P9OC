@@ -22,7 +22,6 @@ from django.conf.urls.static import static
 from authentication import views as auth_views
 from blog import views as blog_views
 
-
 urlpatterns = [
     path("admin-panel/", admin.site.urls),
     path("", auth_views.login_view, name="login"),
