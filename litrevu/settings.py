@@ -159,10 +159,11 @@ LOGIN_URL = "login"
 # ajout url redirection après login
 LOGIN_REDIRECT_URL = "home"
 
-# ajout rout du dossier média
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
 # ajout de l'url pour la route du dossier média
 MEDIA_URL = "/media/"
+
+# ajout rout du dossier média
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 CSRF_TRUSTED_ORIGINS = ['https://litrevu.onrender.com']
