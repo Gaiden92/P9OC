@@ -165,4 +165,4 @@ MEDIA_ROOT = BASE_DIR / "media"
 # ajout de l'url pour la route du dossier média
 MEDIA_URL = "/media/"
 
-CSRF_TRUSTED_ORIGINS = ['https://litrevu.onrender.com']
+CSRF_TRUSTED_ORIGINS = [RENDER_EXTERNAL_HOSTNAME]
