@@ -160,7 +160,7 @@ LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "home"
 
 # ajout rout du dossier média
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # ajout de l'url pour la route du dossier média
 MEDIA_URL = "/media/"
