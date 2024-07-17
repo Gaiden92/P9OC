@@ -51,7 +51,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     # ligne permettant de mettre à jour le language par rapport au lieu
     "django.middleware.locale.LocaleMiddleware",
@@ -136,7 +136,7 @@ USE_TZ = True
 
 # ajout de l'url pour les fichier css, js et photos du site
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [BASE_DIR.joinpath("static/")]
+# STATICFILES_DIRS = [BASE_DIR.joinpath("static/")]
 
 # This production code might break development mode, so we check whether we're in DEBUG mode
 if not DEBUG:
