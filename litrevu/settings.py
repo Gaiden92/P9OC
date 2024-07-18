@@ -158,4 +158,4 @@ LOGIN_URL = "login"
 # ajout url redirection après login
 LOGIN_REDIRECT_URL = "home"
 
-CSRF_TRUSTED_ORIGINS = [RENDER_EXTERNAL_HOSTNAME]
+CSRF_TRUSTED_ORIGINS = ["https://litrevu.onrender.com"]
