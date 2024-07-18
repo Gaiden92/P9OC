@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -118,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = "en-US"
+LANGUAGE_CODE = "fr-FR"
 
 TIME_ZONE = "UTC"
 
@@ -132,9 +132,17 @@ USE_TZ = True
 
 # ajout de l'url pour les fichier css, js et photos du site
 STATIC_URL = "/static/"
+# ajout de l'url pour la route du dossier média
+MEDIA_URL = "/media/"
+
 STATICFILES_DIRS = [BASE_DIR.joinpath("static/")]
 
+# ajout route du dossier static
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# ajout route du dossier média
+MEDIA_ROOT = BASE_DIR / "media"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -147,9 +155,3 @@ LOGIN_URL = "login"
 
 # ajout url redirection après login
 LOGIN_REDIRECT_URL = "home"
-
-# ajout rout du dossier média
-MEDIA_ROOT = BASE_DIR / "media"
-
-# ajout de l'url pour la route du dossier média
-MEDIA_URL = "/media/"
