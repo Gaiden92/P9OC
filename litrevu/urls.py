@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path, include
+from django.urls import path, re_path
 from django.conf import settings
 from django.conf.urls.static import static, serve
 
@@ -24,20 +24,28 @@ from blog import views as blog_views
 
 urlpatterns = [
     path("admin-panel/", admin.site.urls),
-    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    re_path(r"^media/(?P<path>.*)$",
+            serve,
+            {"document_root": settings.MEDIA_ROOT}),
     path("", auth_views.login_view, name="login"),
     path("logout/", auth_views.logout_view, name="logout"),
     path("home/", blog_views.home, name="home"),
-    path("subscriptions/", blog_views.follow_user, name="subscriptions"),
+    path("subscriptions/",
+         blog_views.follow_user,
+         name="subscriptions"),
     path(
         "subscriptions/<int:user_follow_id>/unfollow/",
         blog_views.unfollow_user,
         name="unfollow",
     ),
     path("signup/", auth_views.signup_view, name="signup"),
-    path("create-ticket/", blog_views.create_ticket, name="create-ticket"),
+    path("create-ticket/",
+         blog_views.create_ticket,
+         name="create-ticket"),
     path("posts/", blog_views.AllPostsView, name="posts"),
-    path("ticket/<int:post_id>/", blog_views.ticket_view, name="ticket-view"),
+    path("ticket/<int:post_id>/",
+         blog_views.ticket_view,
+         name="ticket-view"),
     path(
         "ticket/<int:ticket_id>/update-ticket/",
         blog_views.update_ticket,

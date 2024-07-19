@@ -47,8 +47,12 @@ def home(request: str) -> object:
         ]
     tickets_ids_reviewed = tickets_ids + tickets_ids_users_followed
 
-    tickets = tickets.annotate(content_type=Value("Ticket", CharField()))
-    reviews = reviews.annotate(content_type=Value("Review", CharField()))
+    tickets = tickets.annotate(
+        content_type=Value("Ticket", CharField())
+        )
+    reviews = reviews.annotate(
+        content_type=Value("Review", CharField())
+        )
     tickets_users_followed = tickets_users_followed.annotate(
         content_type=Value("Ticket", CharField())
     )
@@ -68,7 +72,8 @@ def home(request: str) -> object:
     return render(
         request,
         "blog/home.html",
-        {"posts": posts, "tickets_ids_reviewed": tickets_ids_reviewed},
+        {"posts": posts,
+         "tickets_ids_reviewed": tickets_ids_reviewed},
     )
 
 
@@ -163,9 +168,7 @@ def delete_ticket(request: str, ticket_id: int) -> object:
         post.delete()
         return redirect("posts")
 
-    return render(request,
-                  "blog/delete_ticket.html",
-                  context={"post": post})
+    return render(request, "blog/delete_ticket.html", context={"post": post})
 
 
 @login_required
@@ -283,9 +286,7 @@ def delete_review(request: str, review_id: int) -> object:
         post.delete()
         return redirect("posts")
 
-    return render(request,
-                  "blog/delete_review.html",
-                  context={"post": post})
+    return render(request, "blog/delete_review.html", context={"post": post})
 
 
 @login_required

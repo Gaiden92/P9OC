@@ -12,6 +12,7 @@ class MyClearableFileInput(ClearableFileInput):
     Arguments:
         ClearableFileInput -- a class clearablefileinput
     """
+
     initial_text = ""
     input_text = "Télécharger"
     clear_checkbox_label = "Effacer"
@@ -24,6 +25,7 @@ class TicketForm(forms.ModelForm):
     Arguments:
         forms -- a ticket's model form
     """
+
     image = forms.ImageField(
         label_suffix="", required=False, widget=MyClearableFileInput, label=""
     )
@@ -34,9 +36,7 @@ class TicketForm(forms.ModelForm):
         widgets = {
             "description": forms.Textarea(attrs={"rows": 10, "cols": 50}),
         }
-        labels = {"title": "Titre",
-                  "description": "Description",
-                  "image": ""}
+        labels = {"title": "Titre", "description": "Description", "image": ""}
 
 
 class ReviewForm(forms.ModelForm):
@@ -45,6 +45,7 @@ class ReviewForm(forms.ModelForm):
     Arguments:
         forms -- a review's model form
     """
+
     class Meta:
         model = models.Review
         fields = ["headline", "rating", "body"]
@@ -61,15 +62,15 @@ class FollowForm(forms.ModelForm):
     Arguments:
         forms -- a follow's model form
     """
+
     class Meta:
         model = models.UserFollows
         fields = ["user"]
         labels = {"user": ""}
 
-    def __init__(self, *args,
-                 user_exclude: object = None,
-                 follows_list: list = None
-                 ) -> None:
+    def __init__(
+        self, *args, user_exclude: object = None, follows_list: list = None
+    ) -> None:
         """A class constructor for a follow form.
 
         Keyword Arguments:
