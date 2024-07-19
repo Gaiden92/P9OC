@@ -285,3 +285,17 @@ div.review{
     text-align: left;
     padding: 5px;
 }
+
+
+/*404 500*/
+div.page-error > h1{
+    font-size: 200px
+}
+
+div.page-error > h2{
+    font-size: 50px;
+}
+
+div.page-error > p{
+    text-align: center;
+}
