@@ -1,8 +1,20 @@
-# Projet 9 DA-Python OC (Fouchal Sami)
+
+<p align="center">
+    <img src="logo.png" alt="logo" />
+</p>
+<h1 align="center">Développez une application Web en utilisant Django</h1>
+<p align="center">
+    <a href="https://www.python.org">
+        <img src="https://img.shields.io/badge/Python-3.12+-3776AB?style=flat&logo=python&logoColor=white" alt="python-badge">
+    </a>
+    <a href="https://docs.djangoproject.com/en/5.0/">
+        <img src="https://img.shields.io/badge/Django-4.12+-d71b60?style=flat" alt="Django">
+    </a>
+</p>
 
 ***Livrable du Projet 9 du parcours D-A Python d'OpenClassrooms : MVP de LITReview, site communautaire de partage de critiques de livres ou d'article.***
 
-_Testé sous Windows 10 - Python 3.11.4 - Django 4.2.7_
+_Testé sous Windows 10 - Python 3.12 - Django 4.2.7_
 
 ## Initialisation du projet
 
@@ -14,11 +26,21 @@ Dans Windows Powershell, naviguer vers le dossier souhaité.
 git clone https://github.com/Gaiden92/P9OC.git
 ```
 
+
 ###### • Activer l'environnement virtuel
 
 ```
 cd P9OC 
-python -m venv env 
+python -m venv env
+```
+### MacOS et Linux :
+
+```
+source env/bin/activate
+```
+### Windows :
+
+```
 env\Scripts\activate
 ```
 
@@ -28,24 +50,11 @@ env\Scripts\activate
 pip install -r requirements.txt
 ```
 
+###### • Créer un fichier .env qui contiendra la secret-key de votre application Django
 
-### MacOS et Linux :
-Dans le terminal, naviguer vers le dossier souhaité.
-###### • Récupération du projet
 ```
-git clone https://github.com/Gaiden92/P9OC.git
-```
+SECRET_KEY="votre secret key"
 
-###### • Activer l'environnement virtuel
-```
-cd P9OC 
-python3 -m venv env 
-source env/bin/activate
-```
-
-###### • Installer les paquets requis
-```
-pip install -r requirements.txt
 ```
 
 ## Utilisation
@@ -77,15 +86,14 @@ Identifiant : **Admin** | Mot de passe : **samifouchal92**
 
 ### Liste des utilisateurs existants
 
-| *Identifiant* | *Mot de passe* |
-|---------------|----------------|
-| toto          | password123    |
-| tata          | password123    |
-| titi          | password123    |
-| tutu          | password123    |
-| momo          | password123    |
-| mimi          | password123    |
-| mumu          | password123    |
+| *Identifiant*   | *Mot de passe* |
+|-----------------|----------------|
+| claudy          | password123    |
+| jeremy          | password123    |
+| ouahid          | password123    |
+| thomas          | password123    |
+| edi             | password123    |
+
 
 
 ### Fonctionnalités
