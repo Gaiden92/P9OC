@@ -5,6 +5,7 @@ class ContainsLetterValidator:
     """A class representation of a validator if password
     has at least 1 letter.
     """
+
     def validate(self, password, user=None):
         if not any(char.isalpha() for char in password):
             raise ValidationError(
@@ -20,6 +21,7 @@ class ContainsNumberValidator:
     """A class representation of a validator if password
     has at least 1 number.
     """
+
     def validate(self, password, user=None):
         if not any(char.isdigit() for char in password):
             raise ValidationError(

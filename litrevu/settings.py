@@ -27,10 +27,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = "RENDER" not in os.environ
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
+RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
@@ -97,9 +100,7 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib"
-                ".auth.password_validation"
-                ".MinimumLengthValidator",
+        "NAME": "django.contrib" ".auth.password_validation" ".MinimumLengthValidator",
         "OPTIONS": {
             "min_length": 8,
         },
@@ -118,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = "en-US"
+LANGUAGE_CODE = "fr-FR"
 
 TIME_ZONE = "UTC"
 
@@ -132,9 +133,17 @@ USE_TZ = True
 
 # ajout de l'url pour les fichier css, js et photos du site
 STATIC_URL = "/static/"
+# ajout de l'url pour la route du dossier média
+MEDIA_URL = "/media/"
+
 STATICFILES_DIRS = [BASE_DIR.joinpath("static/")]
 
+# ajout route du dossier static
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# ajout route du dossier média
+MEDIA_ROOT = BASE_DIR / "media"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -148,8 +157,4 @@ LOGIN_URL = "login"
 # ajout url redirection après login
 LOGIN_REDIRECT_URL = "home"
 
-# ajout rout du dossier média
-MEDIA_ROOT = BASE_DIR / "media"
-
-# ajout de l'url pour la route du dossier média
-MEDIA_URL = "/media/"
+CSRF_TRUSTED_ORIGINS = ["https://litrevu.onrender.com"]

@@ -13,10 +13,9 @@ class Ticket(models.Model):
         __str__ -- return the string representation
                     of the class
     """
-    user = models.ForeignKey(
-        to=settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE
-        )
+
+    user = models.ForeignKey(to=settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
     title = models.CharField(
         max_length=128,
     )
@@ -38,6 +37,7 @@ class Review(models.Model):
         __str__ -- return the string representation
                     of the class
     """
+
     ratechoices = (
         ("1", 1),
         ("2", 2),
@@ -51,10 +51,8 @@ class Review(models.Model):
     )
     headline = models.CharField(max_length=128)
     body = models.CharField(max_length=8192, blank=True)
-    user = models.ForeignKey(
-        to=settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE
-        )
+    user = models.ForeignKey(to=settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
     time_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
@@ -67,6 +65,7 @@ class UserFollows(models.Model):
     Arguments:
         models -- a class model
     """
+
     user = models.ForeignKey(
         to=settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,

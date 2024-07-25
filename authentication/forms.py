@@ -9,6 +9,7 @@ class LoginForm(forms.Form):
     Arguments:
         forms -- a django form
     """
+
     username = forms.CharField(
         max_length=63,
         label="",
@@ -32,16 +33,19 @@ class SignupForm(UserCreationForm):
     Arguments:
         UserCreationForm -- a user creation form
     """
+
     password1 = forms.CharField(
         max_length=63,
         label="",
-        widget=forms.PasswordInput(attrs={"placeholder": "Mot de passe"}),
+        widget=forms.PasswordInput(
+            attrs={"placeholder": "Mot de passe"}
+            ),
     )
     password2 = forms.CharField(
         max_length=63,
         label="",
-        widget=forms.PasswordInput(attrs={
-            "placeholder": "Confirmer mot de passe"}
+        widget=forms.PasswordInput(
+            attrs={"placeholder": "Confirmer mot de passe"}
             ),
     )
 
@@ -53,7 +57,8 @@ class SignupForm(UserCreationForm):
         }
         widgets = {
             "username": forms.TextInput(
-                attrs={"placeholder": "Nom d'utilisateur"}),
+                attrs={"placeholder": "Nom d'utilisateur"}
+                ),
         }
         labels = {
             "username": "",
